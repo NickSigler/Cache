@@ -48,7 +48,7 @@ def mapeamento_direto(tamanho_cache, pos_memoria, dic):
     imprimir_cache(dic)
                 
         
-           
+        #alg
        
        
         
