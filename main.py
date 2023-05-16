@@ -11,6 +11,8 @@ def inicializar_cache(tamanho_cache,dic):
         dic[i] = -1
         print("{} {}".format(i,dic[i]))
         
+
+
 def imprimir_cache(cache):
     
     #Informar o tamanho atual da cache
@@ -34,12 +36,12 @@ def mapeamento_direto(tamanho_cache, pos_memoria, dic):
         for chave in dic.keys():
             if chave == posicao_cache:
                 if dic[chave] == posicao_cache:
-                    hit += 3
+                    hit += 1
                 else:
                     miss += 1
                     
                 
-            dic[chave] = pos_memoria[i]
+                dic[chave] = pos_memoria[i]
                 
     print("Deram {} miss e {} hits".format(miss, hit)) 
                
