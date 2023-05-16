@@ -33,10 +33,16 @@ def mapeamento_direto(tamanho_cache, pos_memoria, dic):
         #da lista
         for chave in dic.keys():
             if chave == posicao_cache:
-                miss += 1
-                dic[chave] = pos_memoria[i]
+                if dic[chave] == posicao_cache:
+                    hit += 3
+                else:
+                    miss += 1
+                    
                 
-    print("Deram {} miss".format(miss))            
+            dic[chave] = pos_memoria[i]
+                
+    print("Deram {} miss e {} hits".format(miss, hit)) 
+               
     imprimir_cache(dic)
                 
         
