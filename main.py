@@ -48,14 +48,24 @@ def mapeamento_direto(tamanho_cache, pos_memoria, dic):
     imprimir_cache(dic)
                 
         
-        #alg
+dic_associativo = {[]}        
+def criar_conjunto(tamanho_conjunto):
+    for i in range(tamanho_conjunto):
+        dic[i] = [i]
+        print("{} {}".format(i,dic[i]))
+
+
        
        
         
-        
-tamanho_cache = int(input("Informe o tamanho da cache"))
+tamanho_conjunto = int(input("Informe quantos blocos: "))       
+#tamanho_cache = int(input("Informe o tamanho do conjunto: "))
+criar_conjunto(tamanho_conjunto)
 #inicializar_cache(tamanho_cache, dic)
 #imprimir_cache(dic)
 
-mapeamento_direto(tamanho_cache,posicoes_memoria_acessar,dic)
+#mapeamento_direto(tamanho_cache,posicoes_memoria_acessar,dic)
+
+
+
 
