@@ -5,6 +5,7 @@ from optparse import Values
 #Posições atuais da memoria
 posicoes_memoria_acessar = [33,3,11,5]
 dic = {}
+dic_associativo = {}      
 
 def inicializar_cache(tamanho_cache,dic):
     for i in range(tamanho_cache):
@@ -47,12 +48,13 @@ def mapeamento_direto(tamanho_cache, pos_memoria, dic):
                
     imprimir_cache(dic)
                 
-        
-dic_associativo = {[]}        
-def criar_conjunto(tamanho_conjunto):
+              
+  
+def criar_conjunto(tamanho_conjunto, dic_associativo):
     for i in range(tamanho_conjunto):
-        dic[i] = [i]
-        print("{} {}".format(i,dic[i]))
+        dic_associativo[i] = [0,0,0]
+        print("{} {}".format(i,dic_associativo[i]))
+
 
 
        
@@ -60,7 +62,7 @@ def criar_conjunto(tamanho_conjunto):
         
 tamanho_conjunto = int(input("Informe quantos blocos: "))       
 #tamanho_cache = int(input("Informe o tamanho do conjunto: "))
-criar_conjunto(tamanho_conjunto)
+criar_conjunto(tamanho_conjunto, dic_associativo)
 #inicializar_cache(tamanho_cache, dic)
 #imprimir_cache(dic)
 
