@@ -25,3 +25,9 @@ def mapeamento_associativo_conjunto(tamanho_conjunto, pos_memoria, dic):
                     dic[chave] = lista
                     miss += 1
     i += 1
+
+
+
+                    if dic3[0] != -1 :
+          
+            
