@@ -3,7 +3,7 @@ from operator import mod
 from optparse import Values
 
 #Posições atuais da memoria
-posicoes_memoria_acessar = [33,3,11,5]
+posicoes_memoria_acessar = [33,3,11,5,33]
 dic = {}
 dic_associativo = {}      
 
@@ -54,10 +54,16 @@ def mapeamento_direto(tamanho_cache, pos_memoria, dic):
                 
               
   
-def inicializar_conjunto(tamanho_conjunto, dic_associativo):
-    for i in range(tamanho_conjunto):
-        dic_associativo[i] = [0,0,-1]
-        print("{} {}".format(i,dic_associativo[i]))
+def inicializar_conjunto(num_conjuntos, num_blocos, dic_associativo):
+    dic_associativo = {}
+    for i in range(num_conjuntos):
+        conjunto = {}
+        for j in range(num_blocos):
+            nome_bloco = j
+            conjunto[nome_bloco] = [0, 0, 0, 0]
+        nome_conjunto = i
+        dic_associativo[nome_conjunto] = conjunto
+        print(dic_associativo)
 
 
 def imprimir_conjunto(conjunto):
@@ -70,24 +76,27 @@ def imprimir_conjunto(conjunto):
         print("{} {}".format(chave,conjunto[chave]))
 
 
-def mapeamento_associativo_conjunto(tamanho_conjunto, pos_memoria, dic_associativo):
-    miss = 0
-    hit = 0
-    i = 0
-    inicializar_conjunto(tamanho_conjunto, dic_associativo)
-    
-               
-    imprimir_conjunto(dic_associativo)
+def criar_cache_conjunto_associativo(num_conjuntos, num_blocos):
+    inicializar_cache(num_conjuntos,num_blocos)
+
+
+    imprimir_conjunto(cache)
+
+
+
+
+num_conjuntos = int(input("Informe o número de conjuntos da cache: "))
+num_blocos = int(input("Informe o número de blocos por conjunto: "))
+
+inicializar_conjunto(num_conjuntos, num_blocos, dic_associativo)
 
        
-       
         
-tamanho_conjunto = int(input("Informe quantos blocos: "))       
+#tamanho_conjunto = int(input("Informe quantos blocos: "))       
 #tamanho_cache = int(input("Informe o tamanho do conjunto: "))
 
 #inicializar_cache(tamanho_cache, dic)
 #imprimir_cache(dic)
-mapeamento_associativo_conjunto(tamanho_conjunto, posicoes_memoria_acessar, dic_associativo)
 
 
 
