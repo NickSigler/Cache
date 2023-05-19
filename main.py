@@ -7,6 +7,10 @@ posicoes_memoria_acessar = [33,3,11,5]
 dic = {}
 dic_associativo = {}      
 
+
+
+
+
 def inicializar_cache(tamanho_cache,dic):
     for i in range(tamanho_cache):
         dic[i] = -1
@@ -50,23 +54,40 @@ def mapeamento_direto(tamanho_cache, pos_memoria, dic):
                 
               
   
-def criar_conjunto(tamanho_conjunto, dic_associativo):
+def inicializar_conjunto(tamanho_conjunto, dic_associativo):
     for i in range(tamanho_conjunto):
-        dic_associativo[i] = [0,0,0]
+        dic_associativo[i] = [0,0,-1]
         print("{} {}".format(i,dic_associativo[i]))
 
 
+def imprimir_conjunto(conjunto):
+    
+    #Informar o tamanho atual da cache
+    print("O tamanho da cache é {}".format(len(conjunto)))
+    
+    #Informar tabela
+    for chave in conjunto.keys():
+        print("{} {}".format(chave,conjunto[chave]))
+
+
+def mapeamento_associativo_conjunto(tamanho_conjunto, pos_memoria, dic_associativo):
+    miss = 0
+    hit = 0
+    i = 0
+    inicializar_conjunto(tamanho_conjunto, dic_associativo)
+    
+               
+    imprimir_conjunto(dic_associativo)
 
        
        
         
 tamanho_conjunto = int(input("Informe quantos blocos: "))       
 #tamanho_cache = int(input("Informe o tamanho do conjunto: "))
-criar_conjunto(tamanho_conjunto, dic_associativo)
+
 #inicializar_cache(tamanho_cache, dic)
 #imprimir_cache(dic)
-
-#mapeamento_direto(tamanho_cache,posicoes_memoria_acessar,dic)
+mapeamento_associativo_conjunto(tamanho_conjunto, posicoes_memoria_acessar, dic_associativo)
 
 
 
