@@ -85,19 +85,19 @@ def criar_cache_conjunto_associativo(num_conjuntos, num_blocos):
 
 
 
-num_conjuntos = int(input("Informe o número de conjuntos da cache: "))
-num_blocos = int(input("Informe o número de blocos por conjunto: "))
+#num_conjuntos = int(input("Informe o número de conjuntos da cache: "))
+#num_blocos = int(input("Informe o número de blocos por conjunto: "))
 
-inicializar_conjunto(num_conjuntos, num_blocos, dic_associativo)
+#inicializar_conjunto(num_conjuntos, num_blocos, dic_associativo)
 
        
         
 #tamanho_conjunto = int(input("Informe quantos blocos: "))       
-#tamanho_cache = int(input("Informe o tamanho do conjunto: "))
+tamanho_cache = int(input("Informe o tamanho do conjunto: "))
 
 #inicializar_cache(tamanho_cache, dic)
 #imprimir_cache(dic)
 
 
-
+mapeamento_direto(tamanho_cache, posicoes_memoria_acessar, dic)
 
