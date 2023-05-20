@@ -3,7 +3,7 @@ from operator import mod
 from optparse import Values
 
 #Posições atuais da memoria
-posicoes_memoria_acessar = [66,69,20,12,10,4]
+posicoes_memoria_acessar = [0,1,2,3,1,4,5,6]
 dic = {}
 dic_associativo = {}      
 
@@ -25,7 +25,7 @@ def inicializar_cache(tamanho_cache,dic):
 
 def imprimir_cache(cache):
 
-
+    #print ("Tamanho da Cache: {}".format(len(cache)))
     #Informar tabela
     for chave in cache.keys():
         print("         \033[7;37;40m| {} | {} |\033[m\n".format(chave,cache[chave]))
@@ -46,7 +46,7 @@ def mapeamento_direto(tamanho_cache, pos_memoria, dic):
         for chave in dic.keys():
             if chave == posicao_cache:
                 status = 0
-                if dic[chave] == posicao_cache:
+                if dic[chave] == pos_memoria[i]:
                     hit += 1
                     status = "hit"
                 else:
@@ -66,7 +66,7 @@ def mapeamento_direto(tamanho_cache, pos_memoria, dic):
     imprimir_cache(dic)
     print("Memórias acessadas: {}".format(len(posicoes_memoria_acessar)))
     print("Quantidade de Miss: {}\nQuantidade de Hits: {}".format(miss, hit))
-    print("Taxa de acertos: {}%".format((hit/(miss+hit))*100))         
+    print("Taxa de acertos: {:.2f}%".format((hit/(miss+hit))*100))         
               
   
 def inicializar_conjunto(num_conjuntos, num_blocos, dic_associativo):
