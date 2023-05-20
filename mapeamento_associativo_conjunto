@@ -1,0 +1,194 @@
+pos_memoria= [33,3,11,5,33]
+dic = {}
+
+
+
+def criar_cache_conjunto_associativo(num_conjuntos, num_blocos,dic):
+
+    for i in range(num_conjuntos):
+        conjunto = {}
+        for j in range(num_blocos):
+            nome_bloco = j
+            conjunto[nome_bloco] = [-1, -1, -1, -1]
+        nome_conjunto = i
+        dic[nome_conjunto] = conjunto
+    print(dic)
+
+lista_de_espera_original = {}
+def mapeamento_associativo_conjunto_RLU(dic, pos_memoria,lista_de_espera_original):
+    hit = 0
+    miss = 0
+    lista_de_espera_original = {}
+    for chave1 in dic.keys():
+        lista_de_espera_original[chave1] = []
+
+    for i in range(len(pos_memoria)):
+
+        posicao_conjunto = pos_memoria[i] % num_conjuntos
+
+
+        #Está pegando um conjunto
+        for chave1 in dic.keys():
+
+            lista_de_espera = lista_de_espera_original[chave1]
+
+            filtro1 = dic[chave1]
+
+            if chave1 == posicao_conjunto:
+
+                #Percorrendo os blocos dentro do conjunto
+                for chave2 in filtro1.keys():
+
+                    #Identificar se já existe um elemento com LRU
+
+                    if('LRU' in filtro1[chave2]) == True:
+
+                        mudar = filtro1[chave2]
+                        mudar.remove(mudar[0])
+                        mudar.insert(0, "vazio")
+                        mudar.remove(mudar[2])
+                        mudar.insert(2, chave2)
+                        mudar.remove(mudar[3])
+                        mudar.insert(3, pos_memoria[i])
+                        filtro1[chave2] = mudar
+                        dic[chave1] = filtro1
+
+
+
+                        melhor = lista_de_espera[0]
+                        professor_e_o_guilherme = filtro1[melhor]
+                        professor_e_o_guilherme.remove(professor_e_o_guilherme[0])
+                        professor_e_o_guilherme.insert(0, "LRU")
+
+
+
+
+
+
+
+                    else:
+
+
+
+                        mudar = filtro1[chave2]
+                        mudar.remove(mudar[0])
+                        mudar.insert(0, chave2)
+                        mudar.remove(mudar[2])
+                        mudar.insert(2, chave2)
+                        mudar.remove(mudar[3])
+                        mudar.insert(3, pos_memoria[i])
+                        filtro1[chave2] = mudar
+                        dic[chave1] = filtro1
+
+
+                        lista_de_espera.insert(0, chave2)
+                        if (len(lista_de_espera)) == 2:
+
+                            melhor = lista_de_espera[1]
+                            professor_e_o_guilherme = filtro1[melhor]
+                            professor_e_o_guilherme.remove(professor_e_o_guilherme[0])
+                            professor_e_o_guilherme.insert(0,"LRU")
+
+
+
+                        print(lista_de_espera)
+
+
+    print(dic)
+
+def mapeamento_associativo_conjunto_FIFO(dic, pos_memoria,lista_de_espera_original):
+    hit = 0
+    miss = 0
+    lista_de_espera_original = {}
+    for chave1 in dic.keys():
+        lista_de_espera_original[chave1] = []
+
+    for i in range(len(pos_memoria)):
+
+        posicao_conjunto = pos_memoria[i] % num_conjuntos
+
+
+        #Está pegando um conjunto
+        for chave1 in dic.keys():
+
+            lista_de_espera = lista_de_espera_original[chave1]
+
+            filtro1 = dic[chave1]
+
+            if chave1 == posicao_conjunto:
+
+                #Percorrendo os blocos dentro do conjunto
+                for chave2 in filtro1.keys():
+
+                    #Identificar se já existe um elemento com LRU
+
+                    if('FIFO' in filtro1[chave2]) == True:
+
+                        mudar = filtro1[chave2]
+                        mudar.remove(mudar[0])
+                        mudar.insert(0, "vazio")
+                        mudar.remove(mudar[2])
+                        mudar.insert(2, chave2)
+                        mudar.remove(mudar[3])
+                        mudar.insert(3, pos_memoria[i])
+                        filtro1[chave2] = mudar
+                        dic[chave1] = filtro1
+
+
+
+                        melhor = lista_de_espera[0]
+                        professor_e_o_guilherme = filtro1[melhor]
+                        professor_e_o_guilherme.remove(professor_e_o_guilherme[0])
+                        professor_e_o_guilherme.insert(0, "FIFO")
+
+
+
+
+
+
+
+                    else:
+
+
+
+                        mudar = filtro1[chave2]
+                        mudar.remove(mudar[0])
+                        mudar.insert(0, chave2)
+                        mudar.remove(mudar[2])
+                        mudar.insert(2, chave2)
+                        mudar.remove(mudar[3])
+                        mudar.insert(3, pos_memoria[i])
+                        filtro1[chave2] = mudar
+                        dic[chave1] = filtro1
+
+
+                        lista_de_espera.insert(0, chave2)
+                        if (len(lista_de_espera)) == 2:
+
+                            melhor = lista_de_espera[1]
+                            professor_e_o_guilherme = filtro1[melhor]
+                            professor_e_o_guilherme.remove(professor_e_o_guilherme[0])
+                            professor_e_o_guilherme.insert(0,"FIFO")
+
+
+
+                        print(lista_de_espera)
+
+
+    print(dic)
+
+
+
+
+num_conjuntos = int(input("Informe o número de conjuntos da cache: "))
+num_blocos = int(input("Informe o número de blocos por conjunto: "))
+
+cache = criar_cache_conjunto_associativo(num_conjuntos, num_blocos,dic)
+
+
+pergunta = input("Qual método de substituição você deseja usar? FIFO = F / LRU = R").upper()
+if pergunta == "F" :
+    mapeamento_associativo_conjunto_FIFO(dic, pos_memoria, lista_de_espera_original)
+elif pergunta == "R":
+    mapeamento_associativo_conjunto_RLU(dic, pos_memoria, lista_de_espera_original)
+
