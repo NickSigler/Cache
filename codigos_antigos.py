@@ -81,6 +81,7 @@ def mapeamento_associativo_conjunto(dic):
                             lista1.remove(lista1[1])
                             lista1.insert(1, chave)
 
+
     print(dic)
 
 
@@ -93,4 +94,13 @@ mapeamento_associativo_conjunto(dic)
 
 
           
-            
+                        for chave2 in filtro1.keys():
+
+                            if (-1 in filtro1[chave2]) == True:
+                                 
+
+
+
+
+
+                                 
